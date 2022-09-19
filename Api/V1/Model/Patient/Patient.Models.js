@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const randomString = require("randomstring");
 
 //creating patient schema
 const patientSchema = new Schema({
@@ -25,6 +26,7 @@ const patientSchema = new Schema({
     fullName: {
       type: String,
       required: false,
+      default: randomString.generate(12),
     },
     dateOfBirth: {
       type: String,
@@ -46,6 +48,26 @@ const patientSchema = new Schema({
       answer: {
         type: Array,
         required: true,
+      },
+    },
+  ],
+  vaccineSummaryTables: [
+    {
+      whenDue: {
+        type: String,
+        required: true,
+      },
+      give: {
+        type: String,
+        required: false,
+      },
+      comment: {
+        type: String,
+        required: false,
+      },
+      funding: {
+        type: String,
+        required: false,
       },
     },
   ],

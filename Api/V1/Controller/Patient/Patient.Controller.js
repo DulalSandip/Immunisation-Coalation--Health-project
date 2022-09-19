@@ -2,6 +2,8 @@ const AdminPost = require("../../../../Model/Admin/Admin.Models");
 const catchAsync = require("../../ErrorHandler/Error.Handler");
 const PatientPost = require("../../Model/Patient/Patient.Models");
 
+const randomString = require("randomstring");
+
 module.exports = {
   getPneumoSmartInfo: catchAsync(async (req, res) => {
     const pneumoSmartInfo = await AdminPost.find({});
@@ -20,8 +22,9 @@ module.exports = {
   }),
 
   patientUpdateInfo: catchAsync(async (req, res) => {
-	  const updatePatientInfo = await PatientPost.create(req.body);
-	  console.log(updatePatientInfo)
+  
+    const updatePatientInfo = await PatientPost.create(req.body);
+    console.log(updatePatientInfo);
     if (updatePatientInfo) {
       return res.status(200).json({
         status: true,
