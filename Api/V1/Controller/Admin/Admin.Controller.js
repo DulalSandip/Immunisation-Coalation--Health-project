@@ -1,4 +1,4 @@
-const AdminPost = require("../../../../Model/Admin/Admin.Models");
+const AdminPost = require("../../../V1/Model/Admin/Admin.Models");
 const catchAsync = require("../../ErrorHandler/Error.Handler");
 
 module.exports = {

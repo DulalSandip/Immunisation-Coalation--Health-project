@@ -1,4 +1,4 @@
-const AdminPost = require("../../../../Model/Admin/Admin.Models");
+const AdminPost = require("../../../V1/Model/Admin/Admin.Models");
 const catchAsync = require("../../ErrorHandler/Error.Handler");
 const PatientPost = require("../../Model/Patient/Patient.Models");
 
@@ -22,7 +22,6 @@ module.exports = {
   }),
 
   patientUpdateInfo: catchAsync(async (req, res) => {
-  
     const updatePatientInfo = await PatientPost.create(req.body);
     console.log(updatePatientInfo);
     if (updatePatientInfo) {
