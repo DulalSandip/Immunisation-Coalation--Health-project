@@ -1,6 +1,6 @@
 const AdminPost = require("../../../V1/Model/Admin/Admin.Models");
 const catchAsync = require("../../ErrorHandler/Error.Handler");
-const PatientPost = require("../../Model/Patient/Patient.Models");
+const PatientPost = require("../../../V1/Model/Patient/Patient.Models");
 
 const randomString = require("randomstring");
 
@@ -22,6 +22,12 @@ module.exports = {
   }),
 
   patientUpdateInfo: catchAsync(async (req, res) => {
+    if (
+      req.body.patientDetails.fullName === "" ??
+      !req.body.patientDetails.fullName
+    ) {
+      req.body.patientDetails.fullName = randomString.generate(12);
+    }
     const updatePatientInfo = await PatientPost.create(req.body);
     console.log(updatePatientInfo);
     if (updatePatientInfo) {
